@@ -1,19 +1,28 @@
+## [Termux](https://termux.com/)
+Please note that root access is required.  
 
-# Overview
-**OneShot** performs [Pixie Dust attack](https://forums.kali.org/showthread.php?24286-WPS-Pixie-Dust-Attack-Offline-WPS-Attack) without having to switch to monitor mode.
-# Features
- - [Pixie Dust attack](https://forums.kali.org/showthread.php?24286-WPS-Pixie-Dust-Attack-Offline-WPS-Attack);
- - integrated [3WiFi offline WPS PIN generator](https://3wifi.stascorp.com/wpspin);
- - [online WPS bruteforce](https://sviehb.files.wordpress.com/2011/12/viehboeck_wps.pdf);
- - Wi-Fi scanner with highlighting based on iw;
-# Requirements
- - Python 3.6 and above;
- - [Wpa supplicant](https://www.w1.fi/wpa_supplicant/);
- - [Pixiewps](https://github.com/wiire-a/pixiewps);
- - [iw](https://wireless.wiki.kernel.org/en/users/documentation/iw).
-# Setup
+## Installation Steps
+
+**Requirements**
+ ```
+ pkg install -y root-repo
+ ```
+ ```
+ pkg install -y git tsu python wpa-supplicant pixiewps iw openssl
+ ```
+**Download DoubleShot**
+ ```
+ git clone --depth 1 https://github.com/tanvir-projects-archive/OneShot OneShot
+ ```
+#### Running Command
+ ```
+ sudo python OneShot/oneshot.py -i wlan0 --iface-down -K
+ ```
+
+
+## For Linux Distribution 🐧
+
 ## Debian/Ubuntu
-**Installing requirements**
  ```
  sudo apt install -y python3 wpasupplicant iw wget
  ```
@@ -35,29 +44,32 @@
 **Getting OneShot**
  ```
  cd ~
- wget https://raw.githubusercontent.com/drygdryg/OneShot/master/oneshot.py
+ wget https://raw.githubusercontent.com/tanvir-projects-archive/OneShot/master/oneshot.py
  ```
 Optional: getting a list of vulnerable to pixie dust devices for highlighting in scan results:
  ```
- wget https://raw.githubusercontent.com/drygdryg/OneShot/master/vulnwsc.txt
+ wget https://raw.githubusercontent.com/tanvir-projects-archive/OneShot/master/vulnwsc.txt
  ```
+ 
+
 ## Arch Linux
-**Installing requirements**
  ```
  sudo pacman -S wpa_supplicant pixiewps wget python
  ```
 **Getting OneShot**
  ```
- wget https://raw.githubusercontent.com/drygdryg/OneShot/master/oneshot.py
+ wget https://raw.githubusercontent.com/tanvir-projects-archive/OneShot/master/oneshot.py
  ```
 Optional: getting a list of vulnerable to pixie dust devices for highlighting in scan results:
  ```
- wget https://raw.githubusercontent.com/drygdryg/OneShot/master/vulnwsc.txt
+ wget https://raw.githubusercontent.com/tanvir-projects-archive/OneShot/master/vulnwsc.txt
  ```
-## Alpine Linux
-It can also be used to run on Android devices using [Linux Deploy](https://play.google.com/store/apps/details?id=ru.meefik.linuxdeploy)
 
-**Installing requirements**  
+ 
+## Alpine Linux
+It can also be used to run on Android devices using: [Linux Deploy](https://play.google.com/store/apps/details?id=ru.meefik.linuxdeploy)
+
+**Installing requirements**
 Adding the testing repository:
  ```
  sudo sh -c 'echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories'
@@ -67,33 +79,13 @@ Adding the testing repository:
  ```
  **Getting OneShot**
  ```
- sudo wget https://raw.githubusercontent.com/drygdryg/OneShot/master/oneshot.py
+ sudo wget https://raw.githubusercontent.com/tanvir-projects-archive/OneShot/master/oneshot.py
  ```
 Optional: getting a list of vulnerable to pixie dust devices for highlighting in scan results:
  ```
- sudo wget https://raw.githubusercontent.com/drygdryg/OneShot/master/vulnwsc.txt
+ sudo wget https://raw.githubusercontent.com/tanvir-projects-archive/OneShot/master/vulnwsc.txt
  ```
-## [Termux](https://termux.com/)
-Please note that root access is required.  
 
-#### Using installer
- ```
- curl -sSf https://raw.githubusercontent.com/drygdryg/OneShot_Termux_installer/master/installer.sh | bash
- ```
-#### Manually
-**Installing requirements**
- ```
- pkg install -y root-repo
- pkg install -y git tsu python wpa-supplicant pixiewps iw openssl
- ```
-**Getting OneShot**
- ```
- git clone --depth 1 https://github.com/drygdryg/OneShot OneShot
- ```
-#### Running
- ```
- sudo python OneShot/oneshot.py -i wlan0 --iface-down -K
- ```
 
 # Usage
 ```
@@ -147,8 +139,8 @@ Launch online WPS bruteforce with the specified first half of the PIN:
  Try disabling Wi-Fi in the system settings and kill the Network manager. Alternatively, you can try running OneShot with ```--iface-down``` argument.
 #### The wlan0 interface disappears when Wi-Fi is disabled on Android devices with MediaTek SoC
  Try running OneShot with the `--mtk-wifi` flag to initialize Wi-Fi device driver.
-# Acknowledgements
-## Special Thanks
+
+# Credits 
 * `rofl0r` for initial implementation;
 * `Monohrom` for testing, help in catching bugs, some ideas;
 * `Wiire` for developing Pixiewps.
